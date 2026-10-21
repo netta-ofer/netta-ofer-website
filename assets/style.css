@@ -1,0 +1,259 @@
+/* ------------------------------------------------------------------
+   Netta Ofer — site styles
+   Colors and fonts live in :root so they're easy to tweak in one place.
+   ------------------------------------------------------------------ */
+
+:root {
+  --bg: #f7f4ee;
+  --ink: rgba(0, 0, 0, 0.85);
+  --ink-soft: rgba(0, 0, 0, 0.62);
+  --ink-faint: rgba(0, 0, 0, 0.42);
+  --rule: rgba(0, 0, 0, 0.12);
+
+  --font-sans: "Hanken Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --gutter: clamp(16px, 2.5vw, 36px);
+  --measure: 46rem;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, video, iframe { display: block; max-width: 100%; }
+img { height: auto; }
+
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { color: var(--ink-faint); }
+
+::selection { background: rgba(0, 0, 0, 0.12); }
+
+/* ---------- Header + nav ---------- */
+
+.site-header {
+  padding: var(--gutter) var(--gutter) 0;
+}
+
+.site-name {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--ink);
+}
+.site-name:hover { color: var(--ink); }
+
+.site-nav {
+  margin: clamp(3rem, 8vw, 6.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--ink-soft);
+}
+
+.site-nav a {
+  display: inline-flex;
+  gap: 0.45em;
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+.site-nav a:hover { color: var(--ink); }
+.site-nav a[aria-current="page"] { color: var(--ink); }
+.site-nav .arrow { width: 1.1em; flex: none; }
+
+/* Inner pages use a smaller nav so content comes first */
+.site-header.compact .site-nav {
+  margin-top: 2.25rem;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+}
+
+/* ---------- Home: project list ---------- */
+
+.projects {
+  padding: clamp(5rem, 12vw, 10rem) var(--gutter) 0;
+  display: grid;
+  gap: clamp(6rem, 16vw, 13rem);
+}
+
+.project-tile {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+}
+.project-tile:hover { color: inherit; }
+
+.project-tile .media {
+  margin: 0 auto;
+  width: min(100%, 62rem);
+  overflow: hidden;
+}
+.project-tile .media.portrait { width: min(100%, 30rem); }
+
+.project-tile img {
+  margin: 0 auto;
+  width: 100%;
+  transition: opacity 0.3s ease, transform 0.6s ease;
+}
+.project-tile:hover img { opacity: 0.88; transform: scale(1.01); }
+
+.tile-caption {
+  margin-top: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  line-height: 1.6;
+}
+.tile-caption .title { color: var(--ink-soft); font-size: 1.05rem; }
+.tile-caption .more { display: inline-block; margin-top: 0.4rem; text-decoration: underline; text-underline-offset: 0.2em; }
+.project-tile:hover .tile-caption .more { color: var(--ink); }
+
+/* ---------- Generic content pages ---------- */
+
+main.page {
+  padding: clamp(3rem, 8vw, 6rem) var(--gutter) 0;
+}
+
+.prose {
+  max-width: var(--measure);
+}
+
+.page h1 {
+  font-weight: 400;
+  font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+  line-height: 1.15;
+  margin: 0 0 1.5rem;
+}
+
+.page h2 {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 4rem 0 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.page p { margin: 0 0 1.1rem; }
+
+.lede { font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.4; }
+
+/* Dated list used for CV-style sections */
+.entries { list-style: none; margin: 0; padding: 0; }
+.entries li {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 0 1.5rem;
+  padding: 0.55rem 0;
+}
+.entries .when {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--ink-faint);
+  padding-top: 0.2rem;
+}
+.entries .detail { color: var(--ink-soft); display: block; font-size: 1rem; }
+
+.plain { list-style: none; margin: 0; padding: 0; }
+.plain li { padding: 0.2rem 0; }
+
+/* Publications */
+.pubs { list-style: none; margin: 0; padding: 0; }
+.pubs li { padding: 0.9rem 0; border-bottom: 1px solid var(--rule); }
+.pubs li:last-child { border-bottom: 0; }
+.pubs .pub-title { display: block; font-size: 1.2rem; line-height: 1.35; }
+.pubs .pub-meta { display: block; color: var(--ink-soft); font-size: 1rem; margin-top: 0.25rem; }
+.pubs .me { color: var(--ink); font-weight: 600; }
+.pubs .award {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* ---------- Project pages ---------- */
+
+.project-head { max-width: var(--measure); }
+.project-meta {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  color: var(--ink-faint);
+  margin: -0.75rem 0 2rem;
+}
+
+.hero { margin: 0 0 3rem; }
+.hero img, .hero .embed { width: min(100%, 72rem); }
+
+figure { margin: 0; }
+figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  margin-top: 0.6rem;
+}
+
+.embed {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: rgba(0, 0, 0, 0.05);
+}
+.embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.embed.audio { aspect-ratio: auto; height: 166px; }
+
+.gallery {
+  display: grid;
+  gap: 1rem;
+  margin: 3rem 0;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  align-items: start;
+}
+.gallery.two { grid-template-columns: repeat(auto-fill, minmax(min(100%, 28rem), 1fr)); }
+.gallery.wide { grid-template-columns: 1fr; max-width: 72rem; }
+
+.back {
+  display: inline-block;
+  margin-top: 4rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  margin-top: clamp(6rem, 14vw, 10rem);
+  padding: 1.5rem var(--gutter) 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 600px) {
+  body { font-size: 1.05rem; }
+  .entries li { grid-template-columns: 1fr; }
+  .entries .when { padding-top: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
