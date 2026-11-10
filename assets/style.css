@@ -68,7 +68,7 @@ a:active { opacity: 0.7; }
   color: var(--ink);
 }
 
-.sidebar p { margin: 0 0 1.33em; }
+.sidebar p { margin: 0 0 0.7em; }
 .sidebar .highlight { color: var(--highlight); }
 
 .site-nav {
@@ -140,7 +140,7 @@ main {
   border-top: 1px solid var(--rule);
 }
 
-.page p { margin: 0 0 1.33em; }
+.page p { margin: 0 0 0.7em; }
 
 .lede { font-size: 1.35rem; line-height: 1.2; }
 
