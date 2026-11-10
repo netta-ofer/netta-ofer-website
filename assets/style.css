@@ -26,7 +26,7 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { font-size: 90%; -webkit-text-size-adjust: 100%; }  /* scales all rem-based text; 100% = browser default */
 
 body {
   margin: 0;
