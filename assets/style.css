@@ -34,7 +34,7 @@ body {
   color: var(--ink-soft);
   font-family: var(--font-sans);
   font-size: 1.15rem;
-  line-height: 1.33;
+  line-height: 1.2;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -142,7 +142,7 @@ main {
 
 .page p { margin: 0 0 1.33em; }
 
-.lede { font-size: 1.35rem; line-height: 1.33; }
+.lede { font-size: 1.35rem; line-height: 1.2; }
 
 /* Dated list used for CV-style sections */
 .entries { list-style: none; margin: 0; padding: 0; }
@@ -167,7 +167,7 @@ main {
 .pubs { list-style: none; margin: 0; padding: 0; }
 .pubs li { padding: 0.9rem 0; border-bottom: 1px solid var(--rule); }
 .pubs li:last-child { border-bottom: 0; }
-.pubs .pub-title { display: block; font-size: 1.2rem; line-height: 1.35; color: var(--ink); }
+.pubs .pub-title { display: block; font-size: 1.2rem; line-height: 1.2; color: var(--ink); }
 .pubs .pub-meta { display: block; font-size: 1rem; margin-top: 0.25rem; }
 .pubs .me { color: var(--ink); font-weight: 600; }
 .pubs .award {
